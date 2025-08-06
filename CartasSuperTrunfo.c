@@ -25,9 +25,9 @@ int main() {
     printf("\nEstado: ");
     scanf(" %c", &estado1);
     printf("Código: ");
-    scanf(" %2[^\n]", codigo1); // Lê no máximo 2 caracteres
-    printf("Cidade: ");
-    scanf(" %20[^\n]", codigo1); // Lê no máximo 20 caracteres
+    scanf(" %2[^\n]", codigo1);  // Siginifica que o scanf lê até 2 caracteres (%2), ignorando espaços iniciais (observe
+    printf("Cidade: ");          // o espaço antes do %2) ), parando no Enter ou após 2 caracteres
+    scanf(" %20[^\n]", codigo1); // Idem do comentário anterior, porém, lê até 20 caracteres. 
     printf("População: ");
     scanf("%d", &populacao1);
     printf("Area: ");
