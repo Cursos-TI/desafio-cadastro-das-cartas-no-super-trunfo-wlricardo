@@ -5,29 +5,50 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
 // Siga os comentários para implementar cada parte do desafio.
 
+#include <stdio.h>
+#include <stdlib.h> // Para usar a função system()
+// Criando um contador de milisegundos
+#ifdef _WIN32
+    #include <windows.h> // Para usar a função Sleep() no Windows
+    void esperar() {
+        Sleep(1000); // Windows: conta 1000 milissegundos (1 segundo)
+    }
+#else
+    #include <unistd.h> // Para usar a função sleep() no Linux/MacOS
+    void esperar() {
+        sleep(1); // Linux/MacOS: conta 1 segundo
+    }
+#endif
+
+// Função para limpar a tela
+void limpar_tela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    // Definição das variáveis
     char estado1, estado2;
-    char codigo1[3], codigo2[3];
+    char codigo1[4], codigo2[4];
     char cidade1[20], cidade2[20];
     int populacao1, populacao2;
     float area1, area2;
     float pib1, pib2;
     int pontos_turisticos1, pontos_turisticos2;
+
+    /* Solicitando as informações sobre as duas cartas */
     
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    // Leitura dos dados da Carta 1
+    // Carta 1
     printf("\nFORNEÇA DADOS DA CARTA 1:");
     printf("\nEstado: ");
     scanf(" %c", &estado1);
     printf("Código: ");
-    scanf(" %2[^\n]", codigo1);  // Siginifica que o scanf lê até 2 caracteres (%2), ignorando espaços iniciais (observe
-    printf("Cidade: ");          // o espaço antes do %2) ), parando no Enter ou após 2 caracteres
-    scanf(" %20[^\n]", codigo1); // Idem do comentário anterior, porém, lê até 20 caracteres. 
+    scanf(" %3[^\n]", codigo1); // Lê no máximo 3 caracteres
+    printf("Cidade: ");
+    scanf(" %19[^\n]", cidade1); // Lê no máximo 19 caracteres + '\n'
     printf("População: ");
     scanf("%d", &populacao1);
     printf("Area: ");
@@ -39,14 +60,14 @@ int main() {
 
     printf("-----------------------------");
 
-    // Leitura dos dados da Carta 2
+    // Carta 2
     printf("\nFORNEÇA DADOS DA CARTA 2:");
     printf("\nEstado: ");
     scanf(" %c", &estado2);
     printf("Código: ");
-    scanf(" %2[^\n]", codigo2); // Lê no máximo 2 caracteres
+    scanf(" %3[^\n]", codigo2); // Lê no máximo 3 caracteres
     printf("Cidade: ");
-    scanf(" %20[^\n]", codigo2); // Lê no máximo 20 caracteres
+    scanf(" %19[^\n]", cidade2); // Lê no máximo 19 caracteres + '\n'
     printf("População: ");
     scanf("%d", &populacao2);
     printf("Area: ");
@@ -56,11 +77,31 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos_turisticos2);
 
-    printf("\n-----------------------------");
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    printf("-----------------------------");
 
-    return 0;
+    // limpar_tela(); // Limpa a tela e exibe o resultado.
+    printf("\nDados fornecidos com sucesso...aguarde.\n");
+
+    esperar(); // Aguarda 1 segundo antes de limpar a tela.
+
+    // Exibição dos resultados
+    printf("\nCARTA 1:");
+    printf("\nEstado: %c", estado1);
+    printf("\nCódigo: %s", codigo1);
+    printf("\nCidade: %s", cidade1);
+    printf("\nPopulação: %d", populacao1);
+    printf("\nArea: %.2f", area1);
+    printf("\nPIB: %.2f", pib1);
+    printf("\nPontos turísticos: %d", pontos_turisticos1);
+
+    printf("\n");
+
+    printf("\nCARTA 2:");
+    printf("\nEstado: %c", estado2);
+    printf("\nCódigo: %s", codigo2);
+    printf("\nCidade: %s", cidade2);
+    printf("\nPopulação: %d", populacao2);
+    printf("\nArea: %.2f", area2);
+    printf("\nPIB: %.2f", pib2);
+    printf("\nPontos turísticos: %d", pontos_turisticos2);
 }
