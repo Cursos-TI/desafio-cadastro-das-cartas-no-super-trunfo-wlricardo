@@ -7,18 +7,29 @@
 
 #include <stdio.h>
 #include <stdlib.h> // Para usar a função system()
+
 // Criando um contador de milisegundos
 #ifdef _WIN32
     #include <windows.h> // Para usar a função Sleep() no Windows
     void esperar() {
-        Sleep(2000); // Windows: conta 1000 milissegundos (1 segundo)
+        Sleep(4000); // Windows: conta 1000 milissegundos (1 segundo)
     }
 #else
     #include <unistd.h> // Para usar a função sleep() no Linux/MacOS
     void esperar() {
-        sleep(2); // Linux/MacOS: conta 1 segundo
+        sleep(1); // Linux/MacOS: conta 1 segundo
     }
 #endif
+
+// Função para limpar a tela
+void limpar_tela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+    //printf("\033[2J\033[H"); 
+}
 
 int main() {
     char estado1, estado2;
@@ -32,7 +43,7 @@ int main() {
     /* Solicitando as informações sobre as duas cartas */
     
     // Carta 1
-    printf("\nFORNEÇA DADOS DA CARTA 1:");
+    printf("FORNEÇA DADOS DA CARTA 1:");
     printf("\nEstado: ");
     scanf(" %c", &estado1);
     printf("Código: ");
@@ -48,8 +59,9 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos_turisticos1);
 
-    printf("-----------------------------");
-
+    printf("\nDados inseridos com sucesso...\n");
+    esperar();
+    
     // Carta 2
     printf("\nFORNEÇA DADOS DA CARTA 2:");
     printf("\nEstado: ");
@@ -67,31 +79,27 @@ int main() {
     printf("Pontos turísticos: ");
     scanf("%d", &pontos_turisticos2);
 
-    printf("-----------------------------");
-
-    // limpar_tela(); // Limpa a tela e exibe o resultado.
-    printf("\nDados fornecidos com sucesso...aguarde.\n");
-
-    esperar(); // Aguarda 1 segundo antes de limpar a tela.
+    printf("\nDados inseridos com sucesso...\n");
+    esperar();
 
     // Exibição dos resultados
+    printf("\n-----------------------");
+    printf("\nCartas registradas:\n");
     printf("\nCARTA 1:");
     printf("\nEstado: %c", estado1);
     printf("\nCódigo: %s", codigo1);
     printf("\nCidade: %s", cidade1);
-    printf("\nPopulação: %d", populacao1);
-    printf("\nArea: %.2f", area1);
-    printf("\nPIB: %.2f", pib1);
-    printf("\nPontos turísticos: %d", pontos_turisticos1);
-
-    printf("\n");
+    printf("\nPopulação: %d habitantes", populacao1);
+    printf("\nArea: %.2f km²", area1);
+    printf("\nPIB: R$ %.2f", pib1);
+    printf("\nPontos turísticos: %d\n", pontos_turisticos1);
 
     printf("\nCARTA 2:");
     printf("\nEstado: %c", estado2);
     printf("\nCódigo: %s", codigo2);
     printf("\nCidade: %s", cidade2);
-    printf("\nPopulação: %d", populacao2);
-    printf("\nArea: %.2f", area2);
-    printf("\nPIB: %.2f", pib2);
+    printf("\nPopulação: %d habitantes", populacao2);
+    printf("\nArea: %.2f km²", area2);
+    printf("\nPIB: R$ %.2f", pib2);
     printf("\nPontos turísticos: %d", pontos_turisticos2);
 }
