@@ -11,24 +11,14 @@
 #ifdef _WIN32
     #include <windows.h> // Para usar a função Sleep() no Windows
     void esperar() {
-        Sleep(1000); // Windows: conta 1000 milissegundos (1 segundo)
+        Sleep(2000); // Windows: conta 1000 milissegundos (1 segundo)
     }
 #else
     #include <unistd.h> // Para usar a função sleep() no Linux/MacOS
     void esperar() {
-        sleep(1); // Linux/MacOS: conta 1 segundo
+        sleep(2); // Linux/MacOS: conta 1 segundo
     }
 #endif
-
-// Função para limpar a tela
-void limpar_tela() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
-}
-
 
 int main() {
     char estado1, estado2;
