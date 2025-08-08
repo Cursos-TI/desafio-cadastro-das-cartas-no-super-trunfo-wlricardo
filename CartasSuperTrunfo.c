@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
@@ -7,6 +5,9 @@
 
 #include <stdio.h>
 #include <stdlib.h> // Para usar a função system()
+#include <string.h>
+
+#define MAX 100
 
 // Criando um contador de milisegundos
 #ifdef _WIN32
@@ -32,9 +33,12 @@ void limpar_tela() {
 }
 
 int main() {
+    limpar_tela();          // Limpa a tela ao iniciar o programa
+
+    char input[MAX];        // String para capturar a entrada do usuário
     char estado1, estado2;
-    char codigo1[4], codigo2[4];
-    char cidade1[20], cidade2[20];
+    char codigo1[5], codigo2[5];
+    char cidade1[MAX], cidade2[MAX];
     int populacao1, populacao2;
     float area1, area2;
     float pib1, pib2;
@@ -45,19 +49,32 @@ int main() {
     // Carta 1
     printf("FORNEÇA DADOS DA CARTA 1:");
     printf("\nEstado: ");
-    scanf(" %c", &estado1);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, " %c", &estado1);           // Lê o caractere, ignorando espaços
+
     printf("Código: ");
-    scanf(" %3[^\n]", codigo1); // Lê no máximo 3 caracteres
+    fgets(codigo1, sizeof(codigo1), stdin);
+    codigo1[strcspn(codigo1, "\n")] = 0;      // Remove o '\n' do final da string
+
     printf("Cidade: ");
-    scanf(" %19[^\n]", cidade1); // Lê no máximo 19 caracteres + '\n'
+    fgets(cidade1, sizeof(cidade1), stdin);
+    cidade1[strcspn(cidade1, "\n")] = 0;      // Remove o '\n' do final da string
+
     printf("População: ");
-    scanf("%d", &populacao1);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%d", &populacao1);         // Lê o inteiro a partir da string
+
     printf("Area: ");
-    scanf("%f", &area1);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%f", &area1);              // Lê o float a partir da string
+
     printf("PIB: ");
-    scanf("%f", &pib1);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%f", &pib1);               // Lê o float a partir da string
+
     printf("Pontos turísticos: ");
-    scanf("%d", &pontos_turisticos1);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%d", &pontos_turisticos1); // Lê o inteiro a partir da string
 
     printf("\nDados inseridos com sucesso...\n");
     esperar();
@@ -65,41 +82,58 @@ int main() {
     // Carta 2
     printf("\nFORNEÇA DADOS DA CARTA 2:");
     printf("\nEstado: ");
-    scanf(" %c", &estado2);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, " %c", &estado2);           // Lê o caractere
+
     printf("Código: ");
-    scanf(" %3[^\n]", codigo2); // Lê no máximo 3 caracteres
+    fgets(codigo2, sizeof(codigo2), stdin);
+    codigo2[strcspn(codigo2, "\n")] = 0;      // Remove o '\n' do final da string
+    
     printf("Cidade: ");
-    scanf(" %19[^\n]", cidade2); // Lê no máximo 19 caracteres + '\n'
+    fgets(cidade2, sizeof(cidade2), stdin);
+    cidade2[strcspn(cidade2, "\n")] = 0;      // Remove o '\n' do final da string
+
     printf("População: ");
-    scanf("%d", &populacao2);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%d", &populacao2);         // Lê o inteiro a partir da string
+
     printf("Area: ");
-    scanf("%f", &area2);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%f", &area2);              // Lê o float a partir da string
+
     printf("PIB: ");
-    scanf("%f", &pib2);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%f", &pib2);               // Lê o float a partir da string
+
     printf("Pontos turísticos: ");
-    scanf("%d", &pontos_turisticos2);
+    fgets(input, sizeof(input), stdin);
+    sscanf(input, "%d", &pontos_turisticos2); // Lê o inteiro a partir da string
 
     printf("\nDados inseridos com sucesso...\n");
     esperar();
 
     // Exibição dos resultados
-    printf("\n-----------------------");
+    printf("\n-------------------------");
     printf("\nCartas registradas:\n");
     printf("\nCARTA 1:");
-    printf("\nEstado: %c", estado1);
-    printf("\nCódigo: %s", codigo1);
-    printf("\nCidade: %s", cidade1);
-    printf("\nPopulação: %d habitantes", populacao1);
-    printf("\nArea: %.2f km²", area1);
-    printf("\nPIB: R$ %.2f", pib1);
-    printf("\nPontos turísticos: %d\n", pontos_turisticos1);
+    printf("\n-Estado: %c", estado1);
+    printf("\n-Código: %s", codigo1);
+    printf("\n-Cidade: %s", cidade1);
+    printf("\n-População: %d habitantes", populacao1);
+    printf("\n-Area: %.2f km²", area1);
+    printf("\n-PIB: R$ %.2f", pib1);
+    printf("\n-Pontos turísticos: %d\n", pontos_turisticos1);
 
     printf("\nCARTA 2:");
-    printf("\nEstado: %c", estado2);
-    printf("\nCódigo: %s", codigo2);
-    printf("\nCidade: %s", cidade2);
-    printf("\nPopulação: %d habitantes", populacao2);
-    printf("\nArea: %.2f km²", area2);
-    printf("\nPIB: R$ %.2f", pib2);
-    printf("\nPontos turísticos: %d", pontos_turisticos2);
+    printf("\n-Estado: %c", estado2);
+    printf("\n-Código: %s", codigo2);
+    printf("\n-Cidade: %s", cidade2);
+    printf("\n-População: %d habitantes", populacao2);
+    printf("\n-Area: %.2f km²", area2);
+    printf("\n-PIB: R$ %.2f", pib2);
+    printf("\n-Pontos turísticos: %d\n", pontos_turisticos2);
+
+    printf("\n-----FIM DO PROGRAMA-----\n\n");
+
+    return 0;
 }
