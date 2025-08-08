@@ -15,12 +15,12 @@
 #ifdef _WIN32
     #include <windows.h> // Para usar a função Sleep() no Windows
     void esperar() {
-        Sleep(2000); // Windows: conta 2000 milissegundos (2 segundos)
+        Sleep(2000);     // Windows: conta 2000 milissegundos (2 segundos)
     }
 #else
-    #include <unistd.h> // Para usar a função sleep() no Linux/MacOS
+    #include <unistd.h>  // Para usar a função sleep() no Linux/MacOS
     void esperar() {
-        sleep(2); // Linux/MacOS: conta 1 segundo
+        sleep(2);        // Linux/MacOS: conta 2 segundos
     }
 #endif
 
