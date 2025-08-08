@@ -4,8 +4,8 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 #include <stdio.h>
-#include <stdlib.h> // Para usar a função system()
-#include <string.h>
+#include <stdlib.h>     // Para usar a função system()
+#include <string.h>     // Para usar as funções strcspn(), fgets() e sscanf()
 
 #define MAX 100
 
