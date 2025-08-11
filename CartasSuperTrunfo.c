@@ -46,7 +46,7 @@ int main() {
     char cidade1[MAX], cidade2[MAX];
     unsigned long int populacao1, populacao2;
     float area1, area2;
-    float pib1, pib2;
+    double pib1, pib2;
     float densidade_populacional1, densidade_populacional2;
     float pib_per_capita1, pib_per_capita2;
     int pontos_turisticos1, pontos_turisticos2;
@@ -77,7 +77,7 @@ int main() {
 
     printf("PIB: ");
     fgets(input, sizeof(input), stdin);
-    sscanf(input, "%f", &pib1);               // Lê o float a partir da string
+    sscanf(input, "%lf", &pib1);               // Lê o float a partir da string
 
     printf("Pontos turísticos: ");
     fgets(input, sizeof(input), stdin);
@@ -114,7 +114,7 @@ int main() {
 
     printf("PIB: ");
     fgets(input, sizeof(input), stdin);
-    sscanf(input, "%f", &pib2);               // Lê o float a partir da string
+    sscanf(input, "%lf", &pib2);               // Lê o float a partir da string
 
     printf("Pontos turísticos: ");
     fgets(input, sizeof(input), stdin);
