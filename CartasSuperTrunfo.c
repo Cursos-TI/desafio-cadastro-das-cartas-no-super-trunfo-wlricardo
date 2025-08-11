@@ -98,7 +98,6 @@ int main() {
     } else {
         pib_per_capita1 = 0.0;                                          // Se a população for zero, define-se o pib_per_capita como 0.0
     }
-    pib_per_capita1 = (pib1 * 1000000000.0) / (double)populacao1;       // Calcula o PIB per capita
     
     // Carta 2
     printf("\nFORNEÇA DADOS DA CARTA 2:");
