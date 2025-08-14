@@ -49,10 +49,10 @@ double calcular_pib_per_capita(double pib, unsigned long int populacao)
 {
     if (populacao != 0) 
     {
-        return (pib * 1000000000.0) / (double)populacao; // Calcula o PIB per capita
+        return (pib * 1000000000.0) / (double)populacao;    // Calcula o PIB per capita
     } else
     {
-        return 0.0; // Se a população for zero, define-se o pib_per_capita como 0.0
+        return 0.0;                                         // Se a população for zero, define-se o pib_per_capita como 0.0
     }
 }
 
@@ -80,7 +80,12 @@ double calcular_super_poder(unsigned long int populacao, float area, double pib,
     return (populacao + area + pib + pontos_turisticos + densidade_populacional + pib_per_capita);
 }
 
-
+// Separador
+/* A função separador cria uma linha para separar trechos de códigos */
+void separador()
+{
+    printf("-----------------------------------------------------\n");
+}
 
 // Comparar cartas
 /* A função comparar_cartas recebe os dados das duas cartas e compara seus valores, retornando o resultado da comparação. */
@@ -232,8 +237,8 @@ int main()
     limpar_tela(); // Limpa a tela após inserir os dados da segunda carta
 
     // Exibição dos resultados
-    printf("-------------------------");
-    printf("\nCartas registradas:\n");
+    separador();
+    printf("Cartas registradas:\n");
     printf("\nCARTA 1:");
     printf("\n-Estado: %c", estado1);
     printf("\n-Código: %s", codigo1);
@@ -258,12 +263,13 @@ int main()
     printf("\n-PIB per capita: R$ %.2lf", pib_per_capita2);
     printf("\n-Super Poder: %.2lf\n", super_poder2);
 
-    printf("\n-------------------------\n");
+    printf("\n");
+    separador();
     printf("Comparação entre as cartas:\n");
     comparar_cartas(populacao1, populacao2, area1, area2, pib1, pib2, pontos_turisticos1, pontos_turisticos2,
         densidade_populacional1, densidade_populacional2, pib_per_capita1, pib_per_capita2, super_poder1, super_poder2);
-
-    printf("\n\n-----FIM DO PROGRAMA-----\n\n");
+    
+    printf("\n\n-------------------FIM DO PROGRAMA-------------------\n\n");
 
     return 0;
 }
