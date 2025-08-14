@@ -7,7 +7,7 @@
 #include <stdlib.h> // Para usar a função system()
 #include <string.h> // Para usar as funções strcspn(), fgets() e sscanf()
 
-#define MAX 100
+#define MAX 100     // Tamanho máximo para strings
 
 // Temporizador de 2 segundos:
 /* A função esperar() irá pausar a execução do programa por 2 segundos (2000 milissegundos) para permitir que o usuário
