@@ -256,7 +256,7 @@ int main()
     printf("\n-Super Poder: %.2lf\n", super_poder2);
 
     printf("\n-------------------------\n");
-    printf("Comparação entre as cartas :\n");
+    printf("Comparação entre as cartas:\n");
     comparar_cartas(populacao1, populacao2, area1, area2, pib1, pib2, pontos_turisticos1, pontos_turisticos2,
         densidade_populacional1, densidade_populacional2, pib_per_capita1, pib_per_capita2, super_poder1, super_poder2);
 
