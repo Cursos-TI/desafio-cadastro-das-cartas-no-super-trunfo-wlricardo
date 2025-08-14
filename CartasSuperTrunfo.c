@@ -46,7 +46,37 @@ void limpar_tela()
 double calcular_super_poder(unsigned long int populacao, float area, double pib, int pontos_turisticos,
     double pib_per_capita, double densidade_populacional)
 {
+    double inverso_densidade_populacional = (densidade_populacional != 0) ? (1.0 / densidade_populacional) : 0.0; // Evita divisão por zero
     return (populacao + area + pib + pontos_turisticos + pib_per_capita + (1.0 / densidade_populacional));
+}
+
+// Calcular densidade populacional
+/* A função calcular_densidade_populacional recebe a população e a área de uma carta e calcula a densidade populacional.
+   Se a área for zero, a densidade populacional será definida como 0.0 para evitar divisão por zero. */
+double calcular_densidade_populacional(unsigned long int populacao, float area)
+{
+
+    if (area != 0) 
+    {
+        return (double)populacao / area; // Calcula a densidade populacional
+    } else
+    {
+        return 0.0; 
+    }
+}
+
+// Calcular PIB per capita
+/* A função calcular_pib_per_capita recebe o PIB e a população de uma carta e calcula o PIB per capita.
+   Se a população for zero, o PIB per capita será definido como 0.0 para evitar divisão por zero. */
+double calcular_pib_per_capita(double pib, unsigned long int populacao)
+{
+    if (populacao != 0) 
+    {
+        return (pib * 1000000000.0) / (double)populacao; // Calcula o PIB per capita
+    } else
+    {
+        return 0.0; // Se a população for zero, define-se o pib_per_capita como 0.0
+    }
 }
 
 // Comparar cartas
@@ -150,27 +180,9 @@ int main()
     fgets(input, sizeof(input), stdin);
     sscanf(input, "%d", &pontos_turisticos1);   // Lê o inteiro a partir da string
 
-    /* Cálculo da densidade populacional */ 
-    if (area1 != 0)
-    {                                                         // Verifica se a área é diferente de zero para evitar divisão por zero
-        densidade_populacional1 = (double)populacao1 / area1; // Calcula a densidade populacional
-    }
-    else
-    {
-        densidade_populacional1 = 0.0;                        // Se a área for zero, define-se a densidade_populacional como 0.0
-    }
-
-    /* Cálculo do PIB  per capita */
-    if (populacao1 != 0)
-    {                                                                 // Verifica se a população é diferente de zero para evitar divisão por zero
-        pib_per_capita1 = (pib1 * 1000000000.0) / (double)populacao1; // Calcula o PIB per capita
-    }
-    else
-    {
-        pib_per_capita1 = 0.0; // Se a população for zero, define-se o pib_per_capita como 0.0
-    }
-
-    /* Cálculo do Super Porder */
+    // Cálculo das variáveis derivadas
+    densidade_populacional1 = calcular_densidade_populacional(populacao1, area1); 
+    pib_per_capita1 = calcular_pib_per_capita(pib1, populacao1); 
     super_poder1 = calcular_super_poder(populacao1, area1, pib1, pontos_turisticos1, pib_per_capita1, densidade_populacional1);
     
     printf("\nDados inseridos com sucesso...\n");
@@ -207,27 +219,9 @@ int main()
     fgets(input, sizeof(input), stdin);
     sscanf(input, "%d", &pontos_turisticos2);               // Lê o inteiro a partir da string
 
-    /* Cálculo da densidade populacional */
-    if (area2 != 0)                                            // Verifica se a área é diferente de zero para evitar divisão      
-    {                                                          // por zero evitar divisão por zero 
-        densidade_populacional2 = (double)populacao2 / area2;  // Calcula a densidade populacional
-    }
-    else
-    {
-        densidade_populacional2 = 0.0;                         // Se a área for zero, define-se a densidade_populacional como 0.0
-    }
-
-    /* Cálculo do pib per capita */
-    if (populacao2 != 0)                                                // Verifica se a população é diferente de zero para 
-    {                                                                   // evitar divisão por zero.
-        pib_per_capita2 = (pib2 * 1000000000.0) / (float)populacao2;    // Calcula o PIB per capita
-    }
-    else
-    {
-        pib_per_capita2 = 0.0;                // Se a população for zero, define-se o pib_per_capita como 0.0
-    }
-
-    /* Cálculo do Super Porder */
+    // Cálculo das variáveis derivadas
+    densidade_populacional2 = calcular_densidade_populacional(populacao2, area2); 
+    pib_per_capita2 = calcular_pib_per_capita(pib2, populacao2); 
     super_poder2 = calcular_super_poder(populacao2, area2, pib2, pontos_turisticos2, pib_per_capita2, densidade_populacional2);
 
     printf("\nDados inseridos com sucesso...\n");
