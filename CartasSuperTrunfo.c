@@ -9,6 +9,8 @@
 
 #define MAX 100     // Tamanho máximo para strings
 
+
+/* ++++ FUNÇÕES AUXILIARES ++++ */
 // Temporizador de 2 segundos:
 /* A função esperar() irá pausar a execução do programa por 2 segundos (2000 milissegundos) para permitir que o usuário
    visualize os dados inseridos antes de limpar a tela. */
@@ -40,29 +42,6 @@ void limpar_tela()
 #endif
 }
 
-// Calcular super poder
-/* A função calcular_super_poder calcula a soma dos valores numéricos das variáveis das cartas 1 e 2. 
-   No caso da densidade populacional, será tomado seu inverso */
-double calcular_super_poder(unsigned long int populacao, float area, double pib, int pontos_turisticos)
-{
-    return (populacao + area + pib + pontos_turisticos + calcular_densidade_populacional(populacao, area) + calcular_pib_per_capita(pib, populacao));
-}
-
-// Calcular densidade populacional
-/* A função calcular_densidade_populacional recebe a população e a área de uma carta e calcula a densidade populacional.
-   Se a área for zero, a densidade populacional será definida como 0.0 para evitar divisão por zero. */
-double calcular_densidade_populacional(unsigned long int populacao, float area)
-{
-
-    if (area != 0) 
-    {
-        return (double)populacao / area; // Calcula a densidade populacional
-    } else
-    {
-        return 0.0; 
-    }
-}
-
 // Calcular PIB per capita
 /* A função calcular_pib_per_capita recebe o PIB e a população de uma carta e calcula o PIB per capita.
    Se a população for zero, o PIB per capita será definido como 0.0 para evitar divisão por zero. */
@@ -76,6 +55,32 @@ double calcular_pib_per_capita(double pib, unsigned long int populacao)
         return 0.0; // Se a população for zero, define-se o pib_per_capita como 0.0
     }
 }
+
+// Calcular densidade populacional
+/* A função calcular_densidade_populacional recebe a população e a área de uma carta e calcula a densidade populacional.
+   Se a área for zero, a densidade populacional será definida como 0.0 para evitar divisão por zero. */
+float calcular_densidade_populacional(unsigned long int populacao, float area)
+{
+    if (area != 0) 
+    {
+        return (double)populacao / area; // Calcula a densidade populacional
+    } else
+    {
+        return 0.0; 
+    }
+}
+
+// Calcular super poder
+/* A função calcular_super_poder calcula a soma dos valores numéricos das variáveis das cartas 1 e 2. 
+   No caso da densidade populacional, será tomado seu inverso */
+double calcular_super_poder(unsigned long int populacao, float area, double pib, int pontos_turisticos)
+{
+    double densidade_populacional = calcular_densidade_populacional(populacao, area); 
+    double pib_per_capita = calcular_pib_per_capita(pib, populacao); 
+    return (populacao + area + pib + pontos_turisticos + densidade_populacional + pib_per_capita);
+}
+
+
 
 // Comparar cartas
 /* A função comparar_cartas recebe os dados das duas cartas e compara seus valores, retornando o resultado da comparação. */
@@ -110,12 +115,12 @@ void comparar_cartas(unsigned long int populacao1, unsigned long int populacao2,
             
     // Comparar pontos turísticos
     pontos_turisticos = (pontos_turisticos1 > pontos_turisticos2) ? 1 : 2; // Define a carta vencedora com base nos pontos turísticos
-    flag = (pontos_turisticos1 > pontos_turisticos2) ? 1 : 0;     // Define a flag com base na comparação
+    flag = (pontos_turisticos1 > pontos_turisticos2) ? 1 : 0;       // Define a flag com base na comparação
     printf("\nPontos turísticos........: Carta %d venceu (%d)", pontos_turisticos, flag);
             
     // Comparar PIB per capita
-    pib_per_capita = (pib_per_capita1 > pib_per_capita2) ? 1 : 2; // Define a carta vencedora com base no PIB per capita
-    flag = (pib_per_capita1 > pib_per_capita2) ? 1 : 0;           // Define a flag com base na comparação
+    pib_per_capita = (pib_per_capita1 > pib_per_capita2) ? 1 : 2;   // Define a carta vencedora com base no PIB per capita
+    flag = (pib_per_capita1 > pib_per_capita2) ? 1 : 0;             // Define a flag com base na comparação
     printf("\nPIB per capita...........: Carta %d venceu (%d)", pib_per_capita, flag);
             
     // Comparar densidade populacional
