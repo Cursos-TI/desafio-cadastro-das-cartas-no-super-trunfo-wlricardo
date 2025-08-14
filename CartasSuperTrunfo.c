@@ -43,11 +43,9 @@ void limpar_tela()
 // Calcular super poder
 /* A função calcular_super_poder calcula a soma dos valores numéricos das variáveis das cartas 1 e 2. 
    No caso da densidade populacional, será tomado seu inverso */
-double calcular_super_poder(unsigned long int populacao, float area, double pib, int pontos_turisticos,
-    double pib_per_capita, double densidade_populacional)
+double calcular_super_poder(unsigned long int populacao, float area, double pib, int pontos_turisticos)
 {
-    double inverso_densidade_populacional = (densidade_populacional != 0) ? (1.0 / densidade_populacional) : 0.0; // Evita divisão por zero
-    return (populacao + area + pib + pontos_turisticos + pib_per_capita + (1.0 / densidade_populacional));
+    return (populacao + area + pib + pontos_turisticos + calcular_densidade_populacional(populacao, area) + calcular_pib_per_capita(pib, populacao));
 }
 
 // Calcular densidade populacional
@@ -138,7 +136,7 @@ int main()
 
     char input[MAX];        // String para capturar a entrada do usuário
     char estado1, estado2;
-    char codigo1[5], codigo2[5];
+    char codigo1[10], codigo2[10];
     char cidade1[MAX], cidade2[MAX];
     unsigned long int populacao1, populacao2;
     float area1, area2;
@@ -183,7 +181,7 @@ int main()
     // Cálculo das variáveis derivadas
     densidade_populacional1 = calcular_densidade_populacional(populacao1, area1); 
     pib_per_capita1 = calcular_pib_per_capita(pib1, populacao1); 
-    super_poder1 = calcular_super_poder(populacao1, area1, pib1, pontos_turisticos1, pib_per_capita1, densidade_populacional1);
+    super_poder1 = calcular_super_poder(populacao1, area1, pib1, pontos_turisticos1);
     
     printf("\nDados inseridos com sucesso...\n");
     esperar();
@@ -222,7 +220,7 @@ int main()
     // Cálculo das variáveis derivadas
     densidade_populacional2 = calcular_densidade_populacional(populacao2, area2); 
     pib_per_capita2 = calcular_pib_per_capita(pib2, populacao2); 
-    super_poder2 = calcular_super_poder(populacao2, area2, pib2, pontos_turisticos2, pib_per_capita2, densidade_populacional2);
+    super_poder2 = calcular_super_poder(populacao2, area2, pib2, pontos_turisticos2);
 
     printf("\nDados inseridos com sucesso...\n");
     esperar();
