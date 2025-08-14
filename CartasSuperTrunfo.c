@@ -67,38 +67,38 @@ void comparar_cartas(unsigned long int populacao1, unsigned long int populacao2,
 
     // Comparar população
     populacao = (populacao1 > populacao2) ? 1 : 2;                  // Define a carta vencedora com base na população
-    flag = (populacao1 > populacao2) ? 1 : 0;     
-    printf("\nPopulação: Carta %d venceu (%d)", populacao, flag);   // Define a flag com base na comparação
-
+    flag = (populacao1 > populacao2) ? 1 : 0;                       // Define a flag com base na comparação 
+    printf("\nPopulação................: Carta %d venceu (%d)", populacao, flag);  
+    
     // Comparar área
     area = (area1 > area2) ? 1 : 2;                                 // Define a carta vencedora com base na área
     flag = (area1 > area2) ? 1 : 0;                                 // Define a flag com base na comparação
-    printf("\nÁrea: Carta %d venceu (%d)", area, flag);
-
+    printf("\nÁrea.....................: Carta %d venceu (%d)", area, flag);
+    
     // Comparar PIB
     pib = (pib1 > pib2) ? 1 : 2;                                    // Define a carta vencedora com base no PIB
     flag = (pib1 > pib2) ? 1 : 0;                                   // Define a flag com base na comparação
-    printf("\nPIB: Carta %d venceu (%d)", pib, flag);
-    
+    printf("\nPIB......................: Carta %d venceu (%d)", pib, flag);    
+            
     // Comparar pontos turísticos
     pontos_turisticos = (pontos_turisticos1 > pontos_turisticos2) ? 1 : 2; // Define a carta vencedora com base nos pontos turísticos
     flag = (pontos_turisticos1 > pontos_turisticos2) ? 1 : 0;     // Define a flag com base na comparação
-    printf("\nPontos turísticos: Carta %d venceu (%d)", pontos_turisticos, flag);
-
+    printf("\nPontos turísticos........: Carta %d venceu (%d)", pontos_turisticos, flag);
+            
     // Comparar PIB per capita
     pib_per_capita = (pib_per_capita1 > pib_per_capita2) ? 1 : 2; // Define a carta vencedora com base no PIB per capita
     flag = (pib_per_capita1 > pib_per_capita2) ? 1 : 0;           // Define a flag com base na comparação
-    printf("\nPIB per capita: Carta %d venceu (%d)", pib_per_capita, flag);
-
+    printf("\nPIB per capita...........: Carta %d venceu (%d)", pib_per_capita, flag);
+            
     // Comparar densidade populacional
     densidade_populacional = (densidade_populacional1 < densidade_populacional2) ? 1 : 2; // Define a carta vencedora com base na densidade populacional
     flag = (densidade_populacional1 < densidade_populacional2) ? 1 : 0; // Define a flag com base na comparação
-    printf("\nDensidade populacional: Carta %d venceu (%d)", densidade_populacional, flag);
-    
+    printf("\nDensidade populacional...: Carta %d venceu (%d)", densidade_populacional, flag);
+            
     // Comparar Super Poder
     super_poder = (super_poder1 > super_poder2) ? 1 : 2; // Define a carta vencedora com base no Super Poder
     flag = (super_poder1 > super_poder2) ? 1 : 0;         // Define a flag com base na comparação
-    printf("\nSuper Poder: Carta %d venceu (%d)", super_poder, flag);        
+    printf("\nSuper Poder..............: Carta %d venceu (%d)", super_poder, flag);            
 }
     
 
